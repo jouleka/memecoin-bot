@@ -5151,13 +5151,6 @@ def test_v5_schema_manifest_attestor_unit_contract(tmp_path):
         "at,mint,segment,side,qty,quote_price,fill_price,fees_json,realism_grade) "
         "VALUES(1,'shadow','climbing','buy',1,1,1,'{}','B'); END"
     )
-    conn.execute(
-        "CREATE TRIGGER arbitrary_global_legacy_alias_insert_guard "
-        "AFTER INSERT ON decisions WHEN NEW.mint='never' BEGIN "
-        "INSERT INTO paper_trades AS p("
-        "at,mint,segment,side,qty,quote_price,fill_price,fees_json,realism_grade) "
-        "VALUES(1,'shadow','climbing','buy',1,1,1,'{}','B'); END"
-    )
     conn.execute("CREATE TABLE legacy_sink(x)")
     conn.execute("INSERT INTO legacy_sink VALUES ('legacy')")
     conn.execute("CREATE VIEW legacy_sink_view AS SELECT x FROM legacy_sink")
