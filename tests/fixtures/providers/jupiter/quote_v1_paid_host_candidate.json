@@ -1,0 +1,76 @@
+{
+  "name": "quote_v1_paid_host_candidate",
+  "url": "https://api.jup.ag/swap/v1/quote?inputMint=So11111111111111111111111111111111111111112&outputMint=DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263&amount=100000000&slippageBps=50",
+  "status": 200,
+  "headers": {
+    "x-ratelimit-remaining": "4",
+    "x-ratelimit-current": "1",
+    "x-ratelimit-reset": "1783091197"
+  },
+  "body": {
+    "inputMint": "So11111111111111111111111111111111111111112",
+    "inAmount": "100000000",
+    "outputMint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "outAmount": "181508705143",
+    "otherAmountThreshold": "180601161618",
+    "swapMode": "ExactIn",
+    "slippageBps": 50,
+    "platformFee": null,
+    "priceImpactPct": "0",
+    "routePlan": [
+      {
+        "swapInfo": {
+          "ammKey": "Hz1EtXTGaFEtAWRgRNpDMFV6vnSZtQUY9UqmdM6vfKSS",
+          "label": "Meteora DLMM",
+          "inputMint": "So11111111111111111111111111111111111111112",
+          "outputMint": "cbbtcf3aa214zXHbiAZQwf4122FBYbraNdFqgw4iMij",
+          "inAmount": "100000000",
+          "outAmount": "13125"
+        },
+        "percent": 100,
+        "bps": null
+      },
+      {
+        "swapInfo": {
+          "ammKey": "8TxrtAxqA5PA2Y1d2pxzCz9SoDhjrBcYqNAQKVv6p443",
+          "label": "GoonFi V2",
+          "inputMint": "cbbtcf3aa214zXHbiAZQwf4122FBYbraNdFqgw4iMij",
+          "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "inAmount": "13125",
+          "outAmount": "8164235"
+        },
+        "percent": 100,
+        "bps": null
+      },
+      {
+        "swapInfo": {
+          "ammKey": "5Dp922oSaj9rdLHTxZzq1B7QV7KmwY7U7K1JNCRhc45J",
+          "label": "ZeroFi",
+          "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "outputMint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+          "inAmount": "8164235",
+          "outAmount": "181508705143"
+        },
+        "percent": 100,
+        "bps": null
+      }
+    ],
+    "contextSlot": 430544451,
+    "timeTaken": 0.009633847,
+    "swapUsdValue": "8.157970949465448953536276457",
+    "mostReliableAmmsQuoteReport": {
+      "info": {
+        "HxA6SKW5qA4o12fjVgTpXdq2YnZ5Zv1s7SB4FFomsyLM": "8156958",
+        "6oFWm7KPLfxnwMb3z5xwBoXNSPP3JJyirAPqPSiVcnsp": "181474199581",
+        "Czfq3xZZDmsdGdUyrNLtRhGc47cXcZtLG4crryfu44zE": "8159076",
+        "BZtgQEyS6eXUXicYPHecYQ7PybqodXQMvkjUbP4R8mUU": "8160860"
+      }
+    },
+    "longtailMarketQuoteReport": null,
+    "useIncurredSlippageForQuoting": null,
+    "useRewards": null,
+    "otherRoutePlans": null,
+    "loadedLongtailToken": false,
+    "instructionVersion": null
+  }
+}

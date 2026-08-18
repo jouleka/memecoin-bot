@@ -1,0 +1,24 @@
+{
+  "name": "price_v3",
+  "url": "https://lite-api.jup.ag/price/v3?ids=So11111111111111111111111111111111111111112,DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+  "status": 200,
+  "headers": {},
+  "body": {
+    "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263": {
+      "createdAt": "2024-06-07T10:26:40.709Z",
+      "liquidity": 1195149.2606265605,
+      "usdPrice": 4.492159735952627e-06,
+      "blockId": 430544445,
+      "decimals": 5,
+      "priceChange24h": 3.518387200425376
+    },
+    "So11111111111111111111111111111111111111112": {
+      "createdAt": "2024-06-05T08:55:25.527Z",
+      "liquidity": 681067859.2182974,
+      "usdPrice": 81.63299710462975,
+      "blockId": 430544445,
+      "decimals": 9,
+      "priceChange24h": 1.9058806189647262
+    }
+  }
+}

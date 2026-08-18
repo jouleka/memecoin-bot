@@ -1,0 +1,46 @@
+{
+  "name": "quote_bonk_sol_reverse",
+  "url": "https://lite-api.jup.ag/swap/v1/quote?inputMint=DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263&outputMint=So11111111111111111111111111111111111111112&amount=100000000000&slippageBps=50",
+  "status": 200,
+  "headers": {},
+  "body": {
+    "inputMint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "inAmount": "100000000000",
+    "outputMint": "So11111111111111111111111111111111111111112",
+    "outAmount": "55049160",
+    "otherAmountThreshold": "54773915",
+    "swapMode": "ExactIn",
+    "slippageBps": 50,
+    "platformFee": null,
+    "priceImpactPct": "0.000999816107059216263738614",
+    "routePlan": [
+      {
+        "swapInfo": {
+          "ammKey": "6oFWm7KPLfxnwMb3z5xwBoXNSPP3JJyirAPqPSiVcnsp",
+          "label": "Meteora DLMM",
+          "inputMint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+          "outputMint": "So11111111111111111111111111111111111111112",
+          "inAmount": "100000000000",
+          "outAmount": "55049160"
+        },
+        "percent": 100,
+        "bps": null
+      }
+    ],
+    "contextSlot": 430544450,
+    "timeTaken": 0.015730663,
+    "swapUsdValue": "4.4908944807247541391505104849",
+    "mostReliableAmmsQuoteReport": {
+      "info": {
+        "6oFWm7KPLfxnwMb3z5xwBoXNSPP3JJyirAPqPSiVcnsp": "55049160",
+        "Czfq3xZZDmsdGdUyrNLtRhGc47cXcZtLG4crryfu44zE": "54905247"
+      }
+    },
+    "longtailMarketQuoteReport": null,
+    "useIncurredSlippageForQuoting": null,
+    "useRewards": null,
+    "otherRoutePlans": null,
+    "loadedLongtailToken": false,
+    "instructionVersion": null
+  }
+}

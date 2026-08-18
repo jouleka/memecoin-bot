@@ -1,0 +1,39 @@
+[Unit]
+Description=memecoin-bot (paper-only scanner/trader)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+User=memebot
+WorkingDirectory=/opt/memecoin-bot
+ExecStart=/opt/memecoin-bot/.venv/bin/python -m memebot.main --config /opt/memecoin-bot/config.toml
+EnvironmentFile=/opt/memecoin-bot/.env
+Environment=PYTHONDONTWRITEBYTECODE=1
+Restart=always
+RestartSec=5
+WatchdogSec=60
+TimeoutStartSec=30
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectClock=true
+ProtectHostname=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadWritePaths=/opt/memecoin-bot/data
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

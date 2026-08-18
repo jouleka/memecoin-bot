@@ -1,0 +1,186 @@
+# Public-safe runtime defaults. This file contains no secrets; credentials come from env.
+
+[storage]
+data_dir = "data"
+
+[log]
+level = "INFO"
+
+[ops]
+heartbeat_interval_s = 10
+
+[journal]
+max_bytes = 268435456        # 256 MB rotation (spec §5.1)
+retention_days = 30
+disk_cap_bytes = 21474836480 # reserved — disk alarm wired in M2 (dead knob for now, documented scope cut)
+disk_alarm_fraction = 0.8    # reserved — see above
+prune_interval_s = 3600      # hourly retention enforcement so a long run stays under disk_cap_bytes (C10)
+
+[providers.pumpportal]
+ws_url = "wss://pumpportal.fun/api/data"
+stale_after_s = 30
+# free tier: creates + migrations ONLY (trade subscription requires funded key — see docs/PROVIDERS.md)
+
+[providers.helius]
+rpc_url_env = "MEMEBOT_HELIUS_RPC_URL"   # full URL incl. key, env-only
+ws_mode = "targeted"                       # full-program logsSubscribe is ~21x over free tier; M2 uses targeted subscriptions/polling per tracked mint (MB-4 design)
+
+[providers.dexscreener]
+requests_per_minute = 60                   # docs-cited; 30-req burst observed clean
+
+[providers.geckoterminal]
+requests_per_minute = 30                   # docs-cited free tier
+
+[providers.jupiter]
+quote_url = "https://lite-api.jup.ag/swap/v1"
+price_url = "https://lite-api.jup.ag/price/v3"
+requests_per_minute = 60                   # lite host showed no rate headers; conservative budget
+
+[providers.rugcheck]
+requests_per_minute = 15                   # HARD observed header limit; prefer /report/summary
+
+[providers.goplus]
+requests_per_minute = 30                   # no headers observed; conservative
+
+[providers.rss]
+feeds = [
+  "https://www.coindesk.com/arc/outboundfeeds/rss",
+  "https://www.theblock.co/rss.xml",
+  "https://cointelegraph.com/rss",
+]
+poll_minutes = 15
+# CryptoPanic discontinued its free API (2026-04); regime inputs = Jupiter SOL drawdown + RSS panic keywords
+
+[pumpfun]
+program_id = "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"
+pumpswap_program_id = "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA"
+initial_v_sol = 30.0
+initial_v_tokens = 1073000000.0
+sellable_supply = 793100000.0
+token_decimals = 6
+protocol_fee_bps = 95
+creator_fee_bps = 30
+migration_fee_sol = 0.015
+graduation_sol = 85.0        # community-sourced, NOT on-chain confirmed — see PROVIDERS.md
+
+[lifecycle]
+climbing_progress_pct = 10.0     # spec §5.2
+stall_progress_pct = 5.0
+dead_after_stalled_s = 7200      # FRESH + stalled 2h -> DEAD(abandoned)
+dead_no_activity_s = 172800      # 48h idle -> DEAD (spec §5.2)
+
+[curvepoller]
+interval_s = 10
+batch_size = 100                  # getMultipleAccounts max
+max_tracked = 300                 # <=18 RPC calls/min at these defaults; per-call credit cost verified live in C9
+
+[safety]
+top10_holder_max_pct = 30.0
+dev_wallet_max_pct = 10.0
+honeypot_max_impact_pct = 30.0
+recheck_interval_s = 900
+rugcheck_base = "https://api.rugcheck.xyz/v1"
+goplus_base = "https://api.gopluslabs.io/api/v1"
+jupiter_base = "https://lite-api.jup.ag/swap/v1"
+
+[safety.early_buyers]
+enabled = true
+signature_limit = 25            # bounded candidate-only Helius history reads
+buyer_limit = 20                # first unique buy wallets to evaluate
+max_supply_pct = 25.0           # hard fail if early buyers still hold more than this
+
+[governor.rugcheck]
+per_minute = 15
+[governor.goplus]
+per_minute = 30
+[governor.jupiter]
+per_minute = 60
+
+[telegram]
+enabled = false
+watch_enabled = false
+bot_token_env = "MEMEBOT_TELEGRAM_TOKEN"
+chat_id_env = "MEMEBOT_TELEGRAM_CHAT_ID"
+max_alerts_per_hour = 30
+# Per-rug pings are noise (most pump.fun tokens are genuine rugs) -- rug verdicts stay
+# internal (they gate the bot's own buy/sell logic). Telegram is for ops health, /status,
+# and the bot's actual entry/exit decisions (M4+). Flip true only for live debugging.
+alert_on_rug = false
+
+[paper]
+bankroll_sol = 10.0              # per-segment paper bankroll (spec §5.5)
+
+[strategy.climbing]
+entries_enabled = false          # P1 regime kill-switch; full MarketRegime is P4
+score_threshold = 70.0           # deliberately high precision filter (hypothesis)
+position_size_sol = 0.2          # ~2% of the 10 SOL bankroll per position
+max_concurrent_positions = 5
+max_entries_per_hour = 10
+min_samples = 3                  # velocity needs >=3 curve snapshots (excludes the instant-insider tail)
+min_age_s = 30.0                 # do not enter tokens younger than this (instant-graduation tail)
+
+[scorer.climbing]
+weights_version = "climbing-v1"  # stamped on every decision; re-fit from outcomes in P5
+w_velocity = 0.40                # velocity-dominant per evidence (arXiv 2602.14860)
+w_progress = 0.20
+w_age = 0.05
+w_risk = 0.20
+w_smart_money = 0.15             # P2: early-buyer overlap with pre-decision profitable wallets
+velocity_full_scale_sol_per_s = 0.05   # velocity feature saturates at 1.0 here
+progress_full_scale_pct = 80.0         # progress feature saturates here
+age_full_scale_s = 600.0               # age feature saturates at 10 min
+smart_money_quality_full_scale_sol = 5.0
+
+[smart_money]
+min_events = 3
+min_realized_pnl_sol = 1.0
+quality_full_scale_sol = 5.0
+
+[fill]
+latency_min_s = 3.0              # T: fill from the next curve snapshot >= T after the decision
+extra_slippage_bps = 50          # 0.5% penalty for MEV / other fills in the latency gap
+priority_fee_sol = 0.0005        # config-pinned Solana priority-fee estimate
+solana_base_fee_sol = 0.000005   # 5000 lamports base fee
+grade_a_max_impact_pct = 2.0     # buy price-impact <= 2% -> grade A
+grade_b_max_impact_pct = 5.0     # <= 5% -> B
+grade_c_max_impact_pct = 10.0    # <= 10% -> C ; > 10% -> F (thin, excluded from expectancy in P5)
+
+[canonical]
+enabled = true
+resolver_version = "canonical-v1"
+weights_version = "canonical-weighted-v1"
+live_states = ["FRESH","CLIMBING"]
+max_cluster_candidates = 50
+max_creator_history_mints = 100
+max_feature_mints = 1000
+max_open_p3_positions = 100
+liquidity_max_age_s = 30.0
+holder_max_age_s = 900.0
+comparison_price_max_age_s = 300.0
+fill_event_max_age_s = 30.0
+reconcile_interval_s = 60.0
+w_first_mover = 0.35
+w_liquidity = 0.25
+w_holder = 0.20
+w_creator = 0.15
+w_social = 0.05
+
+[canonical.social_weights]
+uri = 0.25
+website = 0.25
+twitter = 0.25
+telegram = 0.25
+
+[counterfactual]
+horizons_s = [3600.0,21600.0,86400.0]
+stale_price_after_s = 300.0   # a candidate whose mint produced no fresh price within this window is treated as DEAD (price 0) at flush — off-poll ⇒ dead per the ~99% base rate
+price_history_retention_s = 90000.0
+price_history_max_samples_per_mint = 10000
+price_history_max_mints = 1000
+max_in_memory_pending_observations = 50000
+
+[exits.climbing]
+ladder_multiples = [1.5, 2.0, 3.0]     # take-profit trigger multiples of entry price
+ladder_fractions = [0.4, 0.3, 0.2]     # fraction of the original qty sold at each rung (0.1 moon-bag)
+time_stop_s = 3600.0                    # 1h hard time-stop (memecoins decay fast; >73% crash <20min)
+trailing_stop_pct = 25.0                # sell the remainder if price falls 25% from its peak

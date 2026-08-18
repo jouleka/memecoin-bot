@@ -1,0 +1,30 @@
+{
+  "dexscreener": [
+    {"name": "token_bonk", "url": "https://api.dexscreener.com/latest/dex/tokens/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263"},
+    {"name": "search_sol", "url": "https://api.dexscreener.com/latest/dex/search?q=SOL"},
+    {"name": "profiles_latest", "url": "https://api.dexscreener.com/token-profiles/latest/v1"},
+    {"name": "boosts_latest", "url": "https://api.dexscreener.com/token-boosts/latest/v1"}
+  ],
+  "geckoterminal": [
+    {"name": "trending_pools", "url": "https://api.geckoterminal.com/api/v2/networks/solana/trending_pools"},
+    {"name": "token_bonk", "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263"}
+  ],
+  "jupiter": [
+    {"name": "quote_sol_bonk", "url": "https://lite-api.jup.ag/swap/v1/quote?inputMint=So11111111111111111111111111111111111111112&outputMint=DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263&amount=100000000&slippageBps=50"},
+    {"name": "quote_bonk_sol_reverse", "url": "https://lite-api.jup.ag/swap/v1/quote?inputMint=DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263&outputMint=So11111111111111111111111111111111111111112&amount=100000000000&slippageBps=50"},
+    {"name": "price_v3", "url": "https://lite-api.jup.ag/price/v3?ids=So11111111111111111111111111111111111111112,DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263"},
+    {"name": "quote_v1_paid_host_candidate", "url": "https://api.jup.ag/swap/v1/quote?inputMint=So11111111111111111111111111111111111111112&outputMint=DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263&amount=100000000&slippageBps=50"}
+  ],
+  "rugcheck": [
+    {"name": "report_bonk", "url": "https://api.rugcheck.xyz/v1/tokens/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263/report"},
+    {"name": "summary_bonk", "url": "https://api.rugcheck.xyz/v1/tokens/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263/report/summary"}
+  ],
+  "goplus": [
+    {"name": "token_security_bonk", "url": "https://api.gopluslabs.io/api/v1/solana/token_security?contract_addresses=DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263"}
+  ],
+  "rss": [
+    {"name": "coindesk", "url": "https://www.coindesk.com/arc/outboundfeeds/rss"},
+    {"name": "theblock", "url": "https://www.theblock.co/rss.xml"},
+    {"name": "cointelegraph", "url": "https://cointelegraph.com/rss"}
+  ]
+}

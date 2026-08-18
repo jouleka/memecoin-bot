@@ -1,0 +1,72 @@
+{
+  "name": "quote_sol_bonk",
+  "url": "https://lite-api.jup.ag/swap/v1/quote?inputMint=So11111111111111111111111111111111111111112&outputMint=DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263&amount=100000000&slippageBps=50",
+  "status": 200,
+  "headers": {},
+  "body": {
+    "inputMint": "So11111111111111111111111111111111111111112",
+    "inAmount": "100000000",
+    "outputMint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+    "outAmount": "181504770048",
+    "otherAmountThreshold": "180597246198",
+    "swapMode": "ExactIn",
+    "slippageBps": 50,
+    "platformFee": null,
+    "priceImpactPct": "0",
+    "routePlan": [
+      {
+        "swapInfo": {
+          "ammKey": "hKH9LFREBm3TxTx5Ex6D1nHTKEA8ii3CWfhEkB9s21u",
+          "label": "AlphaQ",
+          "inputMint": "So11111111111111111111111111111111111111112",
+          "outputMint": "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn",
+          "inAmount": "100000000",
+          "outAmount": "77642716"
+        },
+        "percent": 100,
+        "bps": null
+      },
+      {
+        "swapInfo": {
+          "ammKey": "AoakoPnnLQjaL3PbftXejZz8fAwWPteLQS3cK9cEksRT",
+          "label": "Hadron",
+          "inputMint": "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn",
+          "outputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "inAmount": "77642716",
+          "outAmount": "8164058"
+        },
+        "percent": 100,
+        "bps": null
+      },
+      {
+        "swapInfo": {
+          "ammKey": "5Dp922oSaj9rdLHTxZzq1B7QV7KmwY7U7K1JNCRhc45J",
+          "label": "ZeroFi",
+          "inputMint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "outputMint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+          "inAmount": "8164058",
+          "outAmount": "181504770048"
+        },
+        "percent": 100,
+        "bps": null
+      }
+    ],
+    "contextSlot": 430544450,
+    "timeTaken": 0.00943396,
+    "swapUsdValue": "8.158920764069875281921308351",
+    "mostReliableAmmsQuoteReport": {
+      "info": {
+        "6oFWm7KPLfxnwMb3z5xwBoXNSPP3JJyirAPqPSiVcnsp": "181474199581",
+        "BZtgQEyS6eXUXicYPHecYQ7PybqodXQMvkjUbP4R8mUU": "8155076",
+        "Hp53XEtt4S8SvPCXarsLSdGfZBuUr5mMmZmX2DRNXQKp": "77629467",
+        "Czfq3xZZDmsdGdUyrNLtRhGc47cXcZtLG4crryfu44zE": "8159076"
+      }
+    },
+    "longtailMarketQuoteReport": null,
+    "useIncurredSlippageForQuoting": null,
+    "useRewards": null,
+    "otherRoutePlans": null,
+    "loadedLongtailToken": false,
+    "instructionVersion": null
+  }
+}

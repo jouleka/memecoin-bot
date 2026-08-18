@@ -1,0 +1,25 @@
+{
+  "name": "summary_bonk",
+  "url": "https://api.rugcheck.xyz/v1/tokens/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263/report/summary",
+  "status": 200,
+  "headers": {
+    "x-rate-limit-limit": "15",
+    "x-rate-limit-remaining": "13"
+  },
+  "body": {
+    "tokenProgram": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+    "tokenType": "",
+    "risks": [
+      {
+        "name": "Mutable metadata",
+        "value": "",
+        "description": "Token metadata can be changed by the owner",
+        "score": 100,
+        "level": "warn"
+      }
+    ],
+    "score": 101,
+    "score_normalised": 7,
+    "lpLockedPct": 3.1401614950390733
+  }
+}

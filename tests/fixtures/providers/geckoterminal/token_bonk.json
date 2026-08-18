@@ -1,0 +1,50 @@
+{
+  "name": "token_bonk",
+  "url": "https://api.geckoterminal.com/api/v2/networks/solana/tokens/DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+  "status": 200,
+  "headers": {
+    "x-request-id": "d5c5dab5-a578-483b-8eef-c91eb67580bf"
+  },
+  "body": {
+    "data": {
+      "id": "solana_DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+      "type": "token",
+      "attributes": {
+        "address": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+        "name": "Bonk",
+        "symbol": "Bonk",
+        "decimals": 5,
+        "image_url": "https://coin-images.coingecko.com/coins/images/28600/large/bonk.jpg?1696527587",
+        "banner_image_url": "https://assets.geckoterminal.com/mtbrza38irdzqv8grql1hhm2zy3f",
+        "coingecko_coin_id": "bonk",
+        "total_supply": "8799471349656843476.0",
+        "normalized_total_supply": "87994713496568.4",
+        "price_usd": "0.00000444269235",
+        "fdv_usd": "390933440.458298",
+        "total_reserve_in_usd": "1810580.538031621575204570761394520446195",
+        "volume_usd": {
+          "h24": "274530.30529134"
+        },
+        "market_cap_usd": "390933440.491646"
+      },
+      "relationships": {
+        "top_pools": {
+          "data": [
+            {
+              "id": "solana_5zpyutJu9ee6jFymDGoK7F6S5Kczqtc9FomP3ueKuyA9",
+              "type": "pool"
+            },
+            {
+              "id": "solana_3UwfrdLTpAjxTRni1boc5HUWe6hzc4HgE5yLdvEp2Noc",
+              "type": "pool"
+            },
+            {
+              "id": "solana_6oFWm7KPLfxnwMb3z5xwBoXNSPP3JJyirAPqPSiVcnsp",
+              "type": "pool"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

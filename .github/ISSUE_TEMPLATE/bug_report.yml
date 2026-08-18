@@ -1,0 +1,34 @@
+name: Bug report
+description: Report a reproducible paper-mode defect
+title: "bug: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include credentials, private infrastructure, databases, journals, or wallet data.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Provide minimal steps using public fixtures or redacted synthetic data.
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Commit
+      description: The commit hash where you observed the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: checks
+    attributes:
+      label: Checks run
+      description: Include relevant test and lint commands and their redacted output.

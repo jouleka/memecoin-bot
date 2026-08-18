@@ -1,0 +1,17 @@
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Public Solana addresses in provider fixtures"
+condition = "AND"
+paths = [
+  '''^tests/fixtures/providers/dexscreener/(?:boosts|profiles)_latest\.json$''',
+  '''^tests/fixtures/providers/goplus/token_security_bonk\.json$''',
+  '''^tests/fixtures/providers/jupiter/quote_(?:bonk_sol_reverse|sol_bonk|v1_paid_host_candidate)\.json$''',
+  '''^tests/fixtures/providers/pumpportal/NOTES\.md$''',
+]
+regexTarget = "line"
+regexes = [
+  '''"(?:ammKey|bondingCurveKey|tokenAddress|token_account)"\s*:\s*"[1-9A-HJ-NP-Za-km-z]{32,88}"''',
+  '''"tokenAddress"\s*:\s*"0x[0-9A-Fa-f]{40}"''',
+]

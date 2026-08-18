@@ -1,0 +1,11 @@
+{
+  "status": 200,
+  "body": {
+    "jsonrpc": "2.0",
+    "error": {
+      "code": -32603,
+      "message": "account index service overloaded, please try again."
+    },
+    "id": 1
+  }
+}
