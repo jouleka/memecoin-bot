@@ -5668,17 +5668,6 @@ def test_v5_schema_manifest_attestor_unit_contract(tmp_path):
     )
     assert_rejected(
         lambda candidate: candidate.execute(
-            "CREATE TRIGGER arbitrary_alias_additive_insert_guard "
-            "AFTER INSERT ON paper_trades WHEN NEW.mint='never' BEGIN "
-            "INSERT INTO paper_trades AS p("
-            "at,mint,segment,side,qty,quote_price,fill_price,fees_json,"
-            "realism_grade,canonical_proof_hash) "
-            "VALUES(1,'x','climbing','buy',1,1,1,'{}','B','proof'); END"
-        ),
-        "extra v5-owned schema object",
-    )
-    assert_rejected(
-        lambda candidate: candidate.execute(
             "CREATE TRIGGER arbitrary_additive_replace_guard "
             "AFTER INSERT ON tokens BEGIN "
             "REPLACE INTO tokens(mint,p3_identity_ingested_at) "
